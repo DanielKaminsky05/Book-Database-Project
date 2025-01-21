@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books</title>
+    <link rel="stylesheet" href="./styles/style.css">
+</head>
+<body>
+    
+
+    <div class="content">
+
+        
+    </div>
+
+    <div class = "inputForms">
+        <form action = "/input" method = "POST">
+            <div id = "form1" class="popupMenu hidden">
+                <div class = "menu">
+                    <h2>Enter Book</h2>
+                    <div class = "inputBook">
+                        <p>Enter the ISBN</p>
+                        <input type="text" name = "isbn">
+                    </div>
+                    <div class = "inputBook">
+                        <p>Enter the Title</p>
+                        <input type="text" name = "title">
+                    </div>
+                    <div class = "inputBook">
+                        <p>Enter the Author</p>
+                        <input type="text" name = "author">
+                    </div> 
+
+                    <div class="buttonCenter">
+                        <button type = "submit">
+                            Submit Data
+                        </button>
+
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </form>
+    </div>
+   
+
+
+    <div class="bottomMenu">
+
+
+        <button onclick="toggleForm()">Add Book</button>
+        <button>Delete Book</button>
+    </div>
+</body>
+
+<script>
+    function toggleForm() {
+        document.getElementById("form1").classList.toggle("hidden");
+    }
+
+</script>
+</html>
