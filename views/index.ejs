@@ -10,7 +10,15 @@
     
 
     <div class="content">
-
+        <% books.forEach(element => { %>
+            <% let addr = "https://covers.openlibrary.org/b/isbn/" + element.isbn + "-M.jpg"  %>
+            <div class = bookContainer>
+                <img class="book" src="<%= addr %>">
+                <p>Title: <%- element.title %></p>
+                <p>Author: <%- element.author %></p>
+                
+            </div>
+        <%  });   %>
         
     </div>
 

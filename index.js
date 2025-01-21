@@ -16,21 +16,30 @@ const db = new pg.Client({
 db.connect();
 
 let books = [];
+  
 
 app.use(express.static("./public"));
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.get("/", (req,res) => {
-    res.render("index.ejs", {});
+app.get("/", async (req,res) => {
+    const response = await db.query("Select * from books");
+    books = response.rows;
+    res.render("index.ejs", {books: books});
 
 })
 
-app.post("/input", (req,res) => {
+app.post("/input", async (req,res) => {
     console.log(req.body); 
     let isbn = req.body.isbn;
-    let tilte = req.body.title;
+    let title = req.body.title;
     let author = req.body.author;
-    res.redirect("/");
+    try {
+        await db.query("INSERT INTO books (title, author, isbn) VALUES ($1, $2, $3)", [title, author, isbn]);
+        res.redirect("/");
+    } catch (err) {
+        console.error('Error executing query', err.stack);
+        res.status(500).send('Internal Server Error');
+    }
 })
 
 app.listen(port, () => {
