@@ -16,7 +16,7 @@
                 <img class="book" src="<%= addr %>">
                 <p>Title: <%- element.title %></p>
                 <p>Author: <%- element.author %></p>
-                
+                <p>ISBN: <%- element.isbn %></p>
             </div>
         <%  });   %>
         
@@ -55,17 +55,43 @@
    
 
 
+    <div class = "inputForms">
+        <form action = "/delete" method = "POST">
+            <div id = "form2" class="popupMenu hidden">
+                <div class = "menu">
+                    <h2>Enter Book</h2>
+                    <div class = "inputBook">
+                        <p>Enter the ISBN</p>
+                        <input type="text" name = "isbn">
+                    </div>
+
+                    <div class="buttonCenter">
+                        <button type = "submit">
+                            Submit Data
+                        </button>
+
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </form>
+    </div>
+
     <div class="bottomMenu">
 
 
-        <button onclick="toggleForm()">Add Book</button>
-        <button>Delete Book</button>
+        <button onclick="toggleForm1()">Add Book</button>
+        <button onclick="toggleForm2()">Delete Book</button>
     </div>
 </body>
 
 <script>
-    function toggleForm() {
+    function toggleForm1() {
         document.getElementById("form1").classList.toggle("hidden");
+    }
+    function toggleForm2() {
+        document.getElementById("form2").classList.toggle("hidden");
     }
 
 </script>

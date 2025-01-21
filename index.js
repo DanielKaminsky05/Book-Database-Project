@@ -42,6 +42,14 @@ app.post("/input", async (req,res) => {
     }
 })
 
+app.post("/delete", async (req,res) => {
+    console.log(req.body);
+    let isbn = req.body.isbn;
+    db.query("DELETE FROM books where isbn = $1", [isbn]);
+    res.redirect("/");
+})
+
+
 app.listen(port, () => {
     console.log(`App listening on Port ${port}`);
 })
